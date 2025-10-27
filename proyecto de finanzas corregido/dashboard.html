@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Principal - MiDinero</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <div class="contenedor">
+            <h1>💰 MiDinero</h1>
+            <nav>
+                <a href="dashboard.html">Panel Principal</a>
+                <a href="agregar-transaccion.html">Nueva Transacción</a>
+                <a href="categoria.html">Categorías</a>
+                <a href="estadisticas.html">Estadísticas</a>
+                <a href="inicio.html" onclick="return confirmarCerrarSesion()">Cerrar Sesión</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="dashboard">
+        <div class="contenedor">
+            <h2>Bienvenido, <span id="nombreUsuario">Usuario</span></h2>
+            
+            <div class="resumen-financiero">
+                <div class="tarjeta-resumen ingreso">
+                    <h3>Total Ingresos</h3>
+                    <p class="monto" id="totalIngresos">$0.00</p>
+                </div>
+                <div class="tarjeta-resumen gasto">
+                    <h3>Total Gastos</h3>
+                    <p class="monto" id="totalGastos">$0.00</p>
+                </div>
+                <div class="tarjeta-resumen balance">
+                    <h3>Balance</h3>
+                    <p class="monto" id="balance">$0.00</p>
+                </div>
+            </div>
+
+            <div class="acciones-rapidas">
+                <a href="agregar-transaccion.html" class="boton-accion">+ Agregar Transacción</a>
+                <a href="estadisticas.html" class="boton-accion-secundario">Ver Estadísticas</a>
+            </div>
+
+            <div class="transacciones-recientes">
+                <h3>Transacciones Recientes</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Descripción</th>
+                            <th>Categoría</th>
+                            <th>Monto</th>
+                            <th>Tipo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaTransacciones">
+                        <tr>
+                            <td colspan="6" style="text-align:center; padding:40px; color:#999;">
+                                No hay transacciones registradas
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="contenedor">
+            <p>&copy; 2025 MiDinero - Proyecto Universitario</p>
+        </div>
+    </footer>
+
+    <script src="validaciones.js"></script>
+    <script>
+        // Cargar dashboard al iniciar
+        window.addEventListener('load', function() {
+            cargarDashboard();
+        });
+    </script>
+</body>
+</html>

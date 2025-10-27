@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas - MiDinero</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <div class="contenedor">
+            <h1>💰 MiDinero</h1>
+            <nav>
+                <a href="dashboard.html">Panel Principal</a>
+                <a href="agregar-transaccion.html">Nueva Transacción</a>
+                <a href="categoria.html">Categorías</a>
+                <a href="estadisticas.html">Estadísticas</a>
+                <a href="inicio.html" onclick="return confirmarCerrarSesion()">Cerrar Sesión</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="estadisticas">
+        <div class="contenedor">
+            <h2>Mis Estadísticas Financieras</h2>
+            
+            <div class="filtros">
+                <label for="periodo">Período:</label>
+                <select id="periodo" onchange="cargarEstadisticas()">
+                    <option value="mes">Este mes</option>
+                    <option value="trimestre">Últimos 3 meses</option>
+                    <option value="anio">Este año</option>
+                </select>
+            </div>
+
+            <div class="graficos-container">
+                <div class="grafico-box">
+                    <h3>Gastos por Categoría</h3>
+                    <div class="grafico-barras" id="graficoBarras">
+                        <p style="text-align:center; color:#999; padding:40px;">No hay datos para mostrar</p>
+                    </div>
+                </div>
+
+                <div class="grafico-box">
+                    <h3>Distribución de Gastos</h3>
+                    <div id="graficoCircular" style="text-align:center; padding:40px;">
+                        <p style="color:#999;">No hay datos para mostrar</p>
+                    </div>
+                </div>
+
+                <div class="grafico-box completo">
+                    <h3>Evolución Mensual</h3>
+                    <div class="grafico-linea" id="graficoLinea">
+                        <p style="text-align:center; color:#999; padding:40px;">No hay datos para mostrar</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resumen-estadisticas">
+                <h3>Resumen del Período</h3>
+                <ul id="resumenPeriodo">
+                    <li>Total de transacciones: <strong id="totalTransacciones">0</strong></li>
+                    <li>Categoría con más gastos: <strong id="categoriaMaxGasto">N/A</strong></li>
+                    <li>Promedio de gasto diario: <strong id="promedioGastoDiario">$0.00</strong></li>
+                    <li>Total ahorrado: <strong id="totalAhorrado">$0.00</strong></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="contenedor">
+            <p>&copy; 2025 MiDinero - Proyecto Universitario</p>
+        </div>
+    </footer>
+
+    <script src="validaciones.js"></script>
+    <script>
+        // Cargar estadísticas al iniciar
+        window.addEventListener('load', function() {
+            cargarEstadisticas();
+        });
+    </script>
+</body>
+</html>

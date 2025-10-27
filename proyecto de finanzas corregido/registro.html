@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro - Adm. Finanzas Personales</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <div class="contenedor">
+            <h1>Registro</h1>
+            <nav>
+                <a href="inicio.html">Inicio</a>
+                <a href="login.html">Iniciar Sesión</a>
+                <a href="registro.html" class="activo">Registrarse</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="contenedor">
+            <h2>Crear Cuenta Nueva</h2>
+            
+            <form id="formularioRegistro">
+                <!-- Nombre completo -->
+                <div class="campo">
+                    <label for="nombre">Nombre completo:</label>
+                    <input type="text" id="nombre" placeholder="Ej. Diego Bailón">
+                    <span class="error" id="errorNombre"></span>
+                </div>
+
+                <!-- Correo electrónico -->
+                <div class="campo">
+                    <label for="emailReg">Correo electrónico:</label>
+                    <input type="email" id="emailReg" placeholder="ejemplo@correo.com">
+                    <span class="error" id="errorEmailReg"></span>
+                </div>
+
+                <!-- Contraseña -->
+                <div class="campo">
+                    <label for="passwordReg">Contraseña:</label>
+                    <input type="password" id="passwordReg" placeholder="********" onkeyup="validarPasswordTiempoReal()">
+                    <div class="strength-bar-container">
+                        <div class="strength-bar"></div>
+                    </div>
+                    <span id="strengthText">Muy débil</span>
+                    <span class="error" id="errorPasswordReg"></span>
+                </div>
+
+                <!-- Confirmar contraseña -->
+                <div class="campo">
+                    <label for="passwordConfirm">Confirmar contraseña:</label>
+                    <input type="password" id="passwordConfirm" placeholder="Repite tu contraseña" onkeyup="validarPasswordTiempoReal()">
+                    <span class="error" id="errorPasswordConfirm"></span>
+                </div>
+
+                <!-- Botón -->
+                <button type="button" id="botonregistrar">Registrarse</button>
+                
+                <p class="texto-centro">¿Ya tienes cuenta? <a href="login.html">Inicia sesión aquí</a></p>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="contenedor">
+            <p>&copy; 2025 MiDinero - Proyecto Universitario</p>
+        </div>
+    </footer>
+
+    <script src="validaciones.js"></script>
+</body>
+</html>

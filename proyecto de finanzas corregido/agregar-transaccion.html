@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Transacción - MiDinero</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <div class="contenedor">
+            <h1>💰 MiDinero</h1>
+            <nav>
+                <a href="dashboard.html">Panel Principal</a>
+                <a href="agregar-transaccion.html">Nueva Transacción</a>
+                <a href="categoria.html">Categorías</a>
+                <a href="estadisticas.html">Estadísticas</a>
+                <a href="inicio.html" onclick="return confirmarCerrarSesion()">Cerrar Sesión</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="formulario-seccion">
+        <div class="contenedor-formulario">
+            <h2>Registrar Nueva Transacción</h2>
+            <form id="formTransaccion">
+                <div class="campo">
+                    <label for="tipoTransaccion">Tipo de transacción:</label>
+                    <select id="tipoTransaccion" name="tipo">
+                        <option value="">Selecciona una opción</option>
+                        <option value="ingreso">💰 Ingreso</option>
+                        <option value="gasto">💸 Gasto</option>
+                    </select>
+                    <span class="error" id="errorTipo"></span>
+                </div>
+
+                <div class="campo">
+                    <label for="monto">Monto:</label>
+                    <input type="number" id="monto" name="monto" placeholder="0.00" step="0.01" min="0">
+                    <span class="error" id="errorMonto"></span>
+                </div>
+
+                <div class="campo">
+                    <label for="categoria">Categoría:</label>
+                    <select id="categoria" name="categoria">
+                        <option value="">Selecciona categoría</option>
+                    </select>
+                    <span class="error" id="errorCategoria"></span>
+                </div>
+
+                <div class="campo">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" rows="3" placeholder="Ejemplo: Compra en supermercado"></textarea>
+                    <span class="error" id="errorDescripcion"></span>
+                </div>
+
+                <div class="campo">
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha">
+                    <span class="error" id="errorFecha"></span>
+                </div>
+
+                <button type="submit" class="boton-submit">Guardar Transacción</button>
+                <a href="dashboard.html" class="boton-cancelar">Cancelar</a>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="contenedor">
+            <p>&copy; 2025 MiDinero - Proyecto Universitario</p>
+        </div>
+    </footer>
+
+    <script src="validaciones.js"></script>
+    <script>
+        // Cargar categorías al iniciar la página
+        window.addEventListener('load', function() {
+            cargarCategoriasEnSelect();
+        });
+    </script>
+</body>
+</html>

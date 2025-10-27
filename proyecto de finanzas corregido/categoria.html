@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Categorías - MiDinero</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <div class="contenedor">
+            <h1>💰 MiDinero</h1>
+            <nav>
+                <a href="dashboard.html">Panel Principal</a>
+                <a href="agregar-transaccion.html">Nueva Transacción</a>
+                <a href="categoria.html">Categorías</a>
+                <a href="estadisticas.html">Estadísticas</a>
+                <a href="inicio.html" onclick="return confirmarCerrarSesion()">Cerrar Sesión</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="formulario-seccion">
+        <div class="contenedor" style="max-width: 1200px;">
+            <h2 style="text-align:center; margin-bottom:30px;">Gestión de Categorías</h2>
+            
+            <div class="grid-categorias">
+                <!-- Formulario -->
+                <div class="contenedor-formulario">
+                    <h3>Nueva Categoría</h3>
+                    <form id="formCategoria">
+                        <div class="campo">
+                            <label>Nombre</label>
+                            <input type="text" id="nombreCat" placeholder="Ej: Transporte" required>
+                        </div>
+                        
+                        <div class="campo">
+                            <label>Tipo</label>
+                            <select id="tipoCat">
+                                <option value="ambos">Ambos</option>
+                                <option value="ingreso">Ingresos</option>
+                                <option value="gasto">Gastos</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="boton-submit">Crear Categoría</button>
+                    </form>
+                </div>
+
+                <!-- Lista -->
+                <div class="contenedor-formulario">
+                    <h3>Mis Categorías (<span id="totalCategorias">0</span>)</h3>
+                    <div class="lista-categorias" id="listaCategorias" style="max-height: 500px; overflow-y: auto;">
+                        <p style="text-align:center; color:#999; padding:40px;">No hay categorías creadas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="contenedor">
+            <p>&copy; 2025 MiDinero - Proyecto Universitario</p>
+        </div>
+    </footer>
+
+    <script src="validaciones.js"></script>
+    <script>
+        // Cargar categorías al iniciar
+        window.addEventListener('load', function() {
+            cargarCategorias();
+        });
+    </script>
+</body>
+</html>

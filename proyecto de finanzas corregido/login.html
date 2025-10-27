@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Adm. Finanzas Personales</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <div class="contenedor">
+            <h1>Iniciar Sesión</h1>
+            <nav>
+                <a href="inicio.html">Inicio</a>
+                <a href="login.html">Iniciar Sesión</a>
+                <a href="registro.html">Registrarse</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="contenedor">
+            <h2>Accede a tu cuenta</h2>
+
+            <form id="formularioLogin">
+                <!-- Correo -->
+                <div class="campo">
+                    <label for="emailLogin">Correo electrónico:</label>
+                    <input type="email" id="emailLogin" placeholder="ejemplo@correo.com">
+                    <span class="error" id="errorEmailLogin"></span>
+                </div>
+
+                <!-- Contraseña -->
+                <div class="campo">
+                    <label for="passwordLogin">Contraseña:</label>
+                    <input type="password" id="passwordLogin" placeholder="********">
+                    <span class="error" id="errorPasswordLogin"></span>
+                </div>
+
+                <!-- Botón -->
+                <button type="button" id="botonlogin">Iniciar Sesión</button>
+
+                <p class="texto-centro">¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a></p>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="contenedor">
+            <p>&copy; 2025 MiDinero - Proyecto Universitario</p>
+        </div>
+    </footer>
+
+    <script src="validaciones.js"></script>
+</body>
+</html>
