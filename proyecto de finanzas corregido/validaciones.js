@@ -514,9 +514,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             return valido;
         }
-        // ----------------------------------------------
-        // FIN: LÓGICA DE VALIDACIÓN DE REGISTRO
-        // ----------------------------------------------
     } 
 
     // --- Lógica de Login ---
@@ -531,9 +528,7 @@ document.addEventListener('DOMContentLoaded', () => {
             validarLogin();
         });
 
-        // ----------------------------------------------
-        // INICIO: LÓGICA DE VALIDACIÓN DE LOGIN
-        // ----------------------------------------------
+        // Validar el login
         function validarLogin() {
             let valido = true;
 
@@ -567,7 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ) {
                     // GUARDAR USUARIO ACTUAL EN SESIÓN (CORRECCIÓN CLAVE)
                     localStorage.setItem('usuarioActual', JSON.stringify(usuarioGuardado)); 
-                    alert('✅ Login exitoso'); 
+                    alert('Login exitoso :D'); 
                     window.location.href = 'dashboard.html';
                 } else {
                     alert('❌ Correo o contraseña no existen');
@@ -576,9 +571,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }
-        // ----------------------------------------------
-        // FIN: LÓGICA DE VALIDACIÓN DE LOGIN
-        // ----------------------------------------------
     }
     
     // --- Lógica de Transacción ---
