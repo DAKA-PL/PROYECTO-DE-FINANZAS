@@ -1,20 +1,16 @@
-// ==============================================
-// 1. FUNCIONES GLOBALES CORE FINANCIERO Y UTILIDADES
-// ==============================================
 
-// Función para confirmar cierre de sesión
+// 1. FUNCIONES GLOBALES CORE FINANCIERO Y UTILIDADES================================================================================================================
 function confirmarCerrarSesion() {
-    // CORREGIDO: En login, el inicio de sesión exitoso debe guardar el usuario
-    const usuarioGuardado = JSON.parse(localStorage.getItem('usuarioRegistrado'));
+    const usuarioGuardado = JSON.parse(localStorage.getItem('usuarioRegistrado')); //guardamos los datos en almacenamiento local
     if (usuarioGuardado) {
-        localStorage.setItem('usuarioActual', JSON.stringify(usuarioGuardado));
+        localStorage.setItem('usuarioActual', JSON.stringify(usuarioGuardado)); // si hay un usuario guardado, lo guardamos
     }
     
-    if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
-        localStorage.removeItem('usuarioActual'); // Limpia el usuario de la sesión
-        return true;
+    if (confirm('¿Estás seguro de que deseas cerrar sesión?')) { // si el usuario confirma que desea cerrar sesion, elimina el usuario actual
+        localStorage.removeItem('usuarioActual'); 
+        return true; //true significa que se cerro la sesion
     }
-    return false;
+    return false; //false significa que no se cerro la sesion, en caso de errores
 }
 
 // Función para obtener el usuario actual
@@ -89,9 +85,8 @@ function formatearFecha(fecha) {
     return f.toLocaleDateString('es-EC', opciones);
 }
 
-// ==============================================
-// 2. FUNCIONES DEL DASHBOARD
-// ==============================================
+
+// 2. FUNCIONES DEL DASHBOARD==============================================================================================================================
 
 function cargarDashboard() {
     const usuario = obtenerUsuarioActual();
@@ -200,9 +195,7 @@ function eliminarTransaccion(id) {
     alert('Transacción eliminada correctamente');
 }
 
-// ==============================================
-// 3. FUNCIONES PARA AGREGAR TRANSACCIÓN
-// ==============================================
+// 3. FUNCIONES PARA AGREGAR TRANSACCIÓN=============================================================================================================
 
 function cargarFormularioTransaccion() {
     const usuario = obtenerUsuarioActual();
@@ -218,21 +211,16 @@ function cargarFormularioTransaccion() {
 
 function cargarCategoriasEnSelect() {
     const categorias = obtenerCategorias();
-    // CORREGIDO: ID de tipoTransaccion
     const tipoSelect = document.getElementById('tipoTransaccion'); 
     const categoriaSelect = document.getElementById('categoria');
     
     if (!tipoSelect || !categoriaSelect) return;
-    
-    // Listener para cambio de tipo (definido en DOMContentLoaded)
-    
-    // Cargar categorías iniciales (ejecutar por defecto)
     actualizarCategoriasSegunTipo();
 }
 
 function actualizarCategoriasSegunTipo() {
     const categorias = obtenerCategorias();
-    const tipoSelect = document.getElementById('tipoTransaccion'); // CORREGIDO ID
+    const tipoSelect = document.getElementById('tipoTransaccion');
     const categoriaSelect = document.getElementById('categoria');
     
     if (!tipoSelect || !categoriaSelect) return;
@@ -256,7 +244,7 @@ function guardarTransaccion(event) {
     const fecha = document.getElementById('fecha').value;
     const descripcion = document.getElementById('descripcion').value.trim();
     const monto = document.getElementById('monto').value;
-    const tipo = document.getElementById('tipoTransaccion').value; // CORREGIDO ID
+    const tipo = document.getElementById('tipoTransaccion').value;
     const categoria = document.getElementById('categoria').value;
     
     // Validaciones
@@ -289,16 +277,14 @@ function guardarTransaccion(event) {
     window.location.href = 'dashboard.html';
 }
 
-// ==============================================
-// 4. FUNCIONES PARA CATEGORÍAS
-// ==============================================
+// 4. FUNCIONES PARA CATEGORÍAS=====================================================================================================================================================================================================================================================
 
 function cargarCategorias() {
     const usuario = obtenerUsuarioActual();
     
     if (!usuario) {
         alert('Debes iniciar sesión primero');
-        window.location.href = 'login.html'; // Cambiado de 'inicio.html' a 'login.html'
+        window.location.href = 'login.html'; 
         return;
     }
     
@@ -307,10 +293,6 @@ function cargarCategorias() {
 
 function mostrarCategorias() {
     const categorias = obtenerCategorias();
-    
-    // IDs asumidos según el HTML (listaIngresos, listaGastos no estaban en el HTML previo, usar listaCategorias)
-    // El HTML muestra un solo contenedor: <div class="lista-categorias" id="listaCategorias">
-    // Se renderizarán juntas, agrupadas.
     const listaContenedor = document.getElementById('listaCategorias');
     const totalCategoriasEl = document.getElementById('totalCategorias');
 
