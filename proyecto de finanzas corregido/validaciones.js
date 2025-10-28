@@ -401,9 +401,8 @@ function eliminarCategoria(tipo, nombre) {
     }
 }
 
-// ==============================================
-// 5. FUNCIONES AUXILIARES DE VALIDACIÓN
-// ==============================================
+
+// 5. FUNCIONES AUXILIARES DE VALIDACIÓN=====================================================================================================================================================================================
 
 // Funciones para calcular la fuerza de la contraseña
 function calcularFuerza(password) {
@@ -446,13 +445,11 @@ function limpiarError(idError, input) {
     input.classList.add('valido');
 }
 
-// ==============================================
-// 6. LÓGICA DE INICIALIZACIÓN (Event Listeners al cargar el DOM)
-// ==============================================
+// 6. LÓGICA DE INICIALIZACIÓN registro,login.etc============================================================================================================================0
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- Lógica de Registro ---
+    //Formulario del registro
     const formRegistro = document.getElementById('formularioRegistro');
     if (formRegistro){
         const nombre= document.getElementById('nombre');
@@ -478,14 +475,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
 
                 localStorage.setItem('usuarioRegistrado', JSON.stringify(usuario));
-                alert('✅ Registro exitoso'); 
+                alert('Registro exitoso :D'); 
                 window.location.href = 'login.html';
             }
         });
 
-        // ----------------------------------------------
-        // INICIO: LÓGICA DE VALIDACIÓN DE REGISTRO
-        // ----------------------------------------------
+        // Validar el registro
         function validarRegistro() {
             let valido = true;
 
