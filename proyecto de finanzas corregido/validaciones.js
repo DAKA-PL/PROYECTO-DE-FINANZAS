@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const nombre= document.getElementById('nombre');
         const emailReg = document.getElementById('emailReg');
         const passwordReg = document.getElementById('passwordReg');
-        const passwordConfReg = document.getElementById('passwordConfReg');
+        const passwordConfirm = document.getElementById('passwordConfirm'); 
+        
+        // Variables para la barra de fuerza y botón
         const botonregistrar = document.getElementById('botonregistrar');
         const strengthBar = document.querySelector('.strength-bar'); 
         const strengthText = document.getElementById('strengthText'); 
@@ -26,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
 
                 localStorage.setItem('usuarioRegistrado', JSON.stringify(usuario));
-                alert('Registro exitoso :D');
+                alert('Registro exitoso :D'); 
                 window.location.href = 'login.html';
             }
         });
@@ -55,17 +57,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 limpiarError('errorPasswordReg', passwordReg);
             }
 
-            if(passwordReg.value !== passwordConfReg.value) { 
-                mostrarError('errorPasswordConfReg', 'Las contraseñas no coinciden', passwordConfReg);
+            if(passwordReg.value !== passwordConfirm.value) { 
+                mostrarError('errorPasswordConfirm', 'Las contraseñas no coinciden', passwordConfirm); 
                 valido = false;
             } else {
-                limpiarError('errorPasswordConfReg', passwordConfReg); 
+                limpiarError('errorPasswordConfirm', passwordConfirm); 
             }
             
             return valido;
         }
 
-        //Funciones para la barra de fuerza y botón
+        //funciones para calcular la fuerza de la contraseña
         function calcularFuerza(password) {
             let fuerza = 0;
             if (password.length >=8) fuerza++;
@@ -85,13 +87,13 @@ document.addEventListener('DOMContentLoaded', () => {
             strengthText.textContent = niveles[fuerza]; 
             strengthText.style.color = colores[fuerza]; 
         }
-    }
+    } 
 
     //Formulario del Login
     const formLogin = document.getElementById('formularioLogin');
     if (formLogin){
-        const emailLog = document.getElementById('emailLog');
-        const passwordLog = document.getElementById('passwordLog');
+        const emailLogin = document.getElementById('emailLogin'); 
+        const passwordLogin = document.getElementById('passwordLogin');
         const botonlogin = document.getElementById('botonlogin');
 
         botonlogin.addEventListener('click', (e) => {
@@ -102,24 +104,24 @@ document.addEventListener('DOMContentLoaded', () => {
         function validarLogin() {
             let valido = true;
 
-            limpiarError('errorEmailLog', emailLog);
-            limpiarError('errorPasswordLog', passwordLog); 
+            limpiarError('errorEmailLogin', emailLogin);
+            limpiarError('errorPasswordLogin', passwordLogin); 
 
-            if(emailLog.value.trim() === "") { 
-                mostrarError('errorEmailLog', 'El email es obligatorio', emailLog);
+            if(emailLogin.value.trim() === "") { 
+                mostrarError('errorEmailLogin', 'El email es obligatorio', emailLogin);
                 valido = false;
-            } else if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(emailLog.value)) {
-                mostrarError('errorEmailLog', 'Ingrese un email válido', emailLog);
+            } else if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(emailLogin.value)) {
+                mostrarError('errorEmailLogin', 'Ingrese un email válido', emailLogin);
                 valido = false;
             } else {
-                limpiarError('errorEmailLog', emailLog);
+                limpiarError('errorEmailLogin', emailLogin);
             }
             
-            if (passwordLog.value.trim() === "") {
-                mostrarError('errorPasswordLog', 'La contraseña es obligatoria', passwordLog);
+            if (passwordLogin.value.trim() === "") {
+                mostrarError('errorPasswordLogin', 'La contraseña es obligatoria', passwordLogin);
                 valido = false;
             } else {
-                limpiarError('errorPasswordLog', passwordLog);
+                limpiarError('errorPasswordLogin', passwordLogin);
             }
 
             if (valido) {
@@ -127,22 +129,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (
                     usuarioGuardado &&
-                    usuarioGuardado.email === emailLog.value &&
-                    usuarioGuardado.password === passwordLog.value
+                    usuarioGuardado.email === emailLogin.value &&
+                    usuarioGuardado.password === passwordLogin.value
                 ) {
-                    alert('Login exitoso :D');
+                    alert('Login exitoso :D'); 
                     window.location.href = 'dashboard.html';
                 } else {
                     alert('❌ Correo o contraseña no existen');
-                    emailLog.classList.add('invalido');
-                    passwordLog.classList.add('invalido');
+                    emailLogin.classList.add('invalido');
+                    passwordLogin.classList.add('invalido');
                 }
             }
         }
-    } 
+    }
     
-    //funciones auxiliares
-    
+
+    // Funciones auxiliares    
     function mostrarError(idError, mensaje, input) {
         const error = document.getElementById(idError);
         if(error) error.textContent = mensaje;
